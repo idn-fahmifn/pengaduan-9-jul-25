@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
+
+    public function dashboard()
+    {
+        $data = Laporan::paginate(2);
+        return view('user.dashboard', [
+            'data' => $data
+        ]);
+    }
+
     public function index()
     {
         $user_id = Auth::user()->id; //mengambil nilai id yang sedang login.

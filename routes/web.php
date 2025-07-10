@@ -34,9 +34,7 @@ Route::middleware(['auth', 'verified', 'petugas'])->prefix('petugas')->group(fun
 // group user
 Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
     // route dashboard petugas.
-    Route::get('/dashboard', function () {
-        return view('user.dashboard');
-    })->name('dashboard.user');
+    Route::get('/dashboard', [LaporanController::class, 'dashboard'])->name('dashboard.user');
 
     Route::get('laporan-saya', [LaporanController::class, 'index'])->name('laporan-saya.index');
     Route::get('buat-laporan', [LaporanController::class, 'create'])->name('laporan-saya.create');

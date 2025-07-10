@@ -157,11 +157,17 @@
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4">
-            <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
-                respon
+        @foreach ($respon as $item)
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-1">
+                <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
+                    <h4 class="text-lg  dark:text-gray-200 ">
+                        Respon dari : {{ $item->user->name }}
+                    </h4>
+                    <p class="mt-2 dark:text-gray-200 text-light">
+                        {{ $item->tanggapan }}
+                    </p>
+                </div>
             </div>
-        </div>
-        
+        @endforeach
     </div>
 </x-app-layout>

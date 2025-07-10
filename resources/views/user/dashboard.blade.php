@@ -42,67 +42,55 @@
                 </div>
 
                 <div class="space-y-4">
-                    
-                    
-                    <a href=""
-                        class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-gray-50 dark:bg-slate-700 hover:bg-gray-100 dark:hover:bg-slate-600 p-4 rounded-lg">
-                        <div class="col-span-1 md:col-span-4 flex items-center">
-                            <span class="font-semibold text-gray-900 dark:text-gray-100">Mobil Hilang</span>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">27 Juli 2025
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center">
-                            <span
-                                class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Kehilangan</span>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 flex justify-center -space-x-2">
-                            <div class="col-span-1 md:col-span-2 text-center">
-                                <span
-                                    class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">diproses</span>
+
+
+                    @foreach ($data as $item)
+                        <a href="{{ route('laporan.show', $item->id) }}"
+                            class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-gray-50 dark:bg-slate-700 hover:bg-gray-100 dark:hover:bg-slate-600 p-4 rounded-lg">
+                            <div class="col-span-1 md:col-span-4 flex items-center">
+                                <span class="font-semibold text-gray-900 dark:text-gray-100">{{ $item->judul }}</span>
                             </div>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">Fahmi
-                        </div>
-                    </a>
-                    <a href=""
-                        class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-gray-50 dark:bg-slate-700 hover:bg-gray-100 dark:hover:bg-slate-600 p-4 rounded-lg">
-                        <div class="col-span-1 md:col-span-4 flex items-center">
-                            <span class="font-semibold text-gray-900 dark:text-gray-100">Mobil Hilang</span>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">27 Juli 2025
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center">
-                            <span
-                                class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Kehilangan</span>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 flex justify-center -space-x-2">
+                            <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">
+                                {{ $item->created_at->diffForHumans() }}</div>
                             <div class="col-span-1 md:col-span-2 text-center">
-                                <span
-                                    class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">diproses</span>
+                                @if ($item->jenis_pengaduan == 'kerusakan')
+                                    <span
+                                        class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Kerusakan</span>
+                                @else
+                                    <span
+                                        class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">Kehilangan</span>
+                                @endif
+
                             </div>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">Fahmi
-                        </div>
-                    </a>
-                    <a href=""
-                        class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-gray-50 dark:bg-slate-700 hover:bg-gray-100 dark:hover:bg-slate-600 p-4 rounded-lg">
-                        <div class="col-span-1 md:col-span-4 flex items-center">
-                            <span class="font-semibold text-gray-900 dark:text-gray-100">Mobil Hilang</span>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">27 Juli 2025
-                        </div>
-                        <div class="col-span-1 md:col-span-2 text-center">
-                            <span
-                                class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Kehilangan</span>
-                        </div>
-                        <div class="col-span-1 md:col-span-2 flex justify-center -space-x-2">
-                            <div class="col-span-1 md:col-span-2 text-center">
-                                <span
-                                    class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">diproses</span>
+                            <div class="col-span-1 md:col-span-2 flex justify-center -space-x-2">
+                                @if ($item->status == 'pending')
+                                    <div class="col-span-1 md:col-span-2 text-center">
+                                        <span
+                                            class="bg-gray-100 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">Pending</span>
+                                    </div>
+                                @elseif ($item->status == 'diproses')
+                                    <div class="col-span-1 md:col-span-2 text-center">
+                                        <span
+                                            class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Diproses</span>
+                                    </div>
+                                @elseif ($item->status == 'selesai')
+                                    <div class="col-span-1 md:col-span-2 text-center">
+                                        <span
+                                            class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Selesai</span>
+                                    </div>
+                                @else
+                                    <div class="col-span-1 md:col-span-2 text-center">
+                                        <span
+                                            class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">Ditolak</span>
+                                    </div>
+                                @endif
+
                             </div>
-                        </div>
-                    </a>
-                    
+                        </a>
+                    @endforeach
+
+                    {{-- {{$data}} --}}
+
                 </div>
             </div>
 
