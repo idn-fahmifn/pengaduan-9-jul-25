@@ -14,8 +14,31 @@ class LaporanController extends Controller
     public function dashboard()
     {
         $data = Laporan::paginate(2);
+        $user_id = Auth::user()->id;
+
+        // menghitung semua laporan saya
+        $laporan_saya = Laporan::where('id_user', $user_id)->count();
+        
+        // laporan yang sedang diproses
+        $diproses = Laporan::where('id_user', $user_id)
+        ->where('status', 'diproses')
+        ->count();
+
+        // laporan yang sedang selesai
+        $selesai = Laporan::where('id_user', $user_id)
+        ->where('status', 'selesai')
+        ->count();
+
+        $ditolak = Laporan::where('id_user', $user_id)
+        ->where('status', 'ditolak')
+        ->count();
+
         return view('user.dashboard', [
-            'data' => $data
+            'data' => $data,
+            'laporan_saya' => $laporan_saya,
+            'diproses' => $diproses,
+            'selesai' => $selesai,
+            'ditolak' => $ditolak
         ]);
     }
 

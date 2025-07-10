@@ -12,22 +12,30 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Laporan Saya</h3>
-                    <p class="text-3xl font-bold mt-2">18</p>
+                    <p class="text-3xl font-bold mt-2">
+                        {{$laporan_saya}}
+                    </p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Diproses</h3>
-                    <p class="text-3xl font-bold mt-2">132</p>
+                    <p class="text-3xl font-bold mt-2">
+                        {{$diproses}}
+                    </p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Selesai</h3>
-                    <p class="text-3xl font-bold mt-2">12</p>
+                    <p class="text-3xl font-bold mt-2">
+                        {{$selesai}}
+                    </p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Ditolak</h3>
-                    <p class="text-3xl font-bold mt-2">10</p>
+                    <p class="text-3xl font-bold mt-2">
+                        {{$ditolak}}
+                    </p>
                 </div>
             </div>
 
