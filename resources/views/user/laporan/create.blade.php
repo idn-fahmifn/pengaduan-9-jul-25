@@ -8,7 +8,7 @@
 
                 {{-- form pengaduan --}}
 
-                <form method="post" action="#" class="mt-6 space-y-6" enctype="multipart/form-data">
+                <form method="post" action="{{route('laporan.store')}}" class="mt-6 space-y-6" enctype="multipart/form-data">
                     @csrf
                     <div class="mt-3">
                         <x-input-label for="name" :value="__('Judul laporan ')" />

@@ -32,7 +32,7 @@ class LaporanController extends Controller
         ]);
 
         $user_id = Auth::user()->id; //mengambil id user yang sedang login(pelapor);
-        $today = Carbon::now('Asia/Jakarta'); //jam hari ini.
+        $today = Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s'); //jam hari ini.
 
         $simpan = [
             'id_user' => $user_id,
@@ -50,10 +50,12 @@ class LaporanController extends Controller
             $path = 'public/images/laporan';
             $ext = $gambar->getClientOriginalExtension();
             $nama = 'laporan_pengaduan_'.Carbon::now()->format('ymdhis').'.'.$ext;
+            $gambar->storeAs($path, $nama);
             $simpan['dokumentasi'] = $nama;
         }
 
-        return $simpan;
+        Laporan::create($simpan); //menyimpan ke database
+        return redirect()->route('laporan-saya.index');
 
     }
 

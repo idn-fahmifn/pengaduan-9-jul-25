@@ -33,6 +33,7 @@ Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
 
     Route::get('laporan-saya', [LaporanController::class, 'index'])->name('laporan-saya.index');
     Route::get('buat-laporan', [LaporanController::class, 'create'])->name('laporan-saya.create');
+    Route::post('lapor', [LaporanController::class, 'store'])->name('laporan.store');
 
 });
 
