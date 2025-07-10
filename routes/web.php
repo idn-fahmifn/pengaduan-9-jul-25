@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,12 +24,16 @@ Route::middleware(['auth', 'verified', 'petugas'])->prefix('petugas')->group(fun
     })->name('dashboard.petugas');
 });
 
-// group petugas
+// group user
 Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
     // route dashboard petugas.
     Route::get('/dashboard', function () {
         return view('user.dashboard');
     })->name('dashboard.user');
+
+    Route::get('laporan-saya', [LaporanController::class, 'index'])->name('laporan-saya.index');
+    Route::get('buat-laporan', [LaporanController::class, 'create'])->name('laporan-saya.create');
+
 });
 
 
