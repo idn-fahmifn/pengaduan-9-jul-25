@@ -59,4 +59,10 @@ class LaporanController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $data = Laporan::find($id);
+        return view('user.laporan.detail', compact('data'));
+    }
+
 }

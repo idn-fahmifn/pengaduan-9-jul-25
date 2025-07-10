@@ -15,7 +15,7 @@
 
                 <div class="hidden md:grid grid-cols-12 gap-4 text-sm text-gray-500 font-semibold mb-2 px-4">
                     <div class="col-span-4">Judul Laporan</div>
-                    <div class="col-span-2 text-center">Tanggal Pengaduan</div>
+                    <div class="col-span-2 text-center">Dibuat pada</div>
                     <div class="col-span-2 text-center">Jenis Pengaduan</div>
                     <div class="col-span-2 text-center">Status</div>
                 </div>
@@ -29,7 +29,7 @@
                                     class="font-semibold text-gray-900 dark:text-gray-100">{{ $item->judul }}</span>
                             </div>
                             <div class="col-span-1 md:col-span-2 text-center text-gray-700 dark:text-gray-100">
-                                {{ $item->tanggal_pengaduan }}</div>
+                                {{ $item->created_at->diffForHumans() }}</div>
                             <div class="col-span-1 md:col-span-2 text-center">
                                 @if ($item->jenis_pengaduan == 'kerusakan')
                                     <span
