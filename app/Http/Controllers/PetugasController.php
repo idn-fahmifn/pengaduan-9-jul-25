@@ -18,7 +18,8 @@ class PetugasController extends Controller
     public function show($id)
     {
         $data = Laporan::find($id);
-        return view('petugas.laporan.detail', compact('data'));
+        $respon = Respon::where('id_pengaduan', $id)->get();
+        return view('petugas.laporan.detail', compact('data', 'respon'));
     }
 
     public function store(Request $request, $id)
@@ -44,11 +45,7 @@ class PetugasController extends Controller
         $ubah_status->save(); //menyimpan ke model laporan dengan status terbaru
 
         Respon::create($simpan); //menambahkan data respon.
-
         return back()->with('success', 'Respon baru ditambahkan');
-
-
-
     }
 
 }

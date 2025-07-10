@@ -161,18 +161,37 @@
             <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
                 <div class="w-full flex justify-between">
                     <h1 class="text-lg text-slate-900 dark:text-gray-100">Respon Laporan</h1>
-                    {{-- area button respon --}}
-                    <x-primary-button x-data=""
-                        x-on:click.prevent="$dispatch('open-modal', 'respon')">{{ __('Respon') }}</x-danger-button>
+
+                    @if ($data->status == 'pending' || $data->status == 'diproses')
+                        {{-- area button respon --}}
+                        <x-primary-button x-data=""
+                            x-on:click.prevent="$dispatch('open-modal', 'respon')">{{ __('Respon') }}</x-danger-button>
+                    @endif
+
                 </div>
             </div>
         </div>
+
+        @foreach ($respon as $item)
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-1">
+                <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
+                    <h4 class="text-lg  dark:text-gray-200 ">
+                        Respon dari : {{ $item->user->name }}
+                    </h4>
+                    <p class="mt-2 dark:text-gray-200 text-light">
+                        {{ $item->tanggapan }}
+                    </p>
+                </div>
+            </div>
+        @endforeach
+
+
     </div>
 
 
     {{-- modal --}}
     <x-modal name="respon" focusable>
-        <form method="post" action="{{route('petugas.laporan.post', $data->id)}}" class="p-6">
+        <form method="post" action="{{ route('petugas.laporan.post', $data->id) }}" class="p-6">
             @csrf
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 {{ __('Respon Laporan') }}

@@ -22,7 +22,7 @@
 
                 <div class="space-y-4">
                     @foreach ($data as $item)
-                        <a href=""
+                        <a href="{{route('laporan.show', $item->id)}}"
                             class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-gray-50 dark:bg-slate-700 hover:bg-gray-100 dark:hover:bg-slate-600 p-4 rounded-lg">
                             <div class="col-span-1 md:col-span-4 flex items-center">
                                 <span
