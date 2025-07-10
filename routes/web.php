@@ -16,7 +16,7 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->group(functio
 });
 
 // group petugas
-Route::middleware(['auth', 'verified'])->prefix('petugas')->group(function () {
+Route::middleware(['auth', 'verified', 'petugas'])->prefix('petugas')->group(function () {
     // route dashboard petugas.
     Route::get('/dashboard', function () {
         return view('petugas.dashboard');
