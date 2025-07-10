@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,11 @@ Route::middleware(['auth', 'verified', 'petugas'])->prefix('petugas')->group(fun
     Route::get('/dashboard', function () {
         return view('petugas.dashboard');
     })->name('dashboard.petugas');
+
+    Route::get('laporan', [PetugasController::class, 'index'])->name('petugas.laporan.index');
+    Route::get('laporan/{param}', [PetugasController::class, 'show'])->name('petugas.laporan.show');
+
+
 });
 
 // group user
