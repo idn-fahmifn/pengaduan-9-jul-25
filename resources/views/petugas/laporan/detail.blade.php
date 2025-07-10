@@ -174,7 +174,6 @@
     <x-modal name="respon" focusable>
         <form method="post" action="{{route('petugas.laporan.post', $data->id)}}" class="p-6">
             @csrf
-
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 {{ __('Respon Laporan') }}
             </h2>
@@ -198,16 +197,14 @@
                 </select>
             </div>
 
-
-
             <div class="mt-6 flex justify-end">
                 <x-secondary-button x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-danger-button class="ms-3">
+                <x-primary-button class="ms-3">
                     {{ __('Respon') }}
-                </x-danger-button>
+                </x-primary-button>
             </div>
         </form>
     </x-modal>
