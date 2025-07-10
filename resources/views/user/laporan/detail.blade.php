@@ -114,6 +114,7 @@
                         </div>
                     </div>
                 @else
+                    <span class="text-red-600">Laporan anda ditolak</span>
                 @endif
             </div>
         </div>
@@ -153,6 +154,12 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4">
+            <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
+                respon
             </div>
         </div>
     </div>

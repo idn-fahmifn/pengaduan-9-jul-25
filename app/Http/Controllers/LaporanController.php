@@ -11,7 +11,8 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        $data = Laporan::all();
+        $user_id = Auth::user()->id; //mengambil nilai id yang sedang login.
+        $data = Laporan::where('id_user', $user_id)->get();
         return view('user.laporan.index', compact('data'));
     }
 
