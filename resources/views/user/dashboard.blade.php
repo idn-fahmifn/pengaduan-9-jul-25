@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-red-600 rounded-lg shadow-md p-6 flex justify-between items-center mb-8 dark:bg-slate-800">
                 <h1 class="text-2xl font-bold text-white">Laporan Saya</h1>
-                <a href="#"
+                <a href="{{ route('laporan-saya.create') }}"
                     class="bg-white dark:bg-red-600 text-red-600 dark:text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-red-800">
                     Buat Laporan Baru
                 </a>
@@ -13,34 +13,37 @@
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Laporan Saya</h3>
                     <p class="text-3xl font-bold mt-2">
-                        {{$laporan_saya}}
+                        {{ $laporan_saya }}
                     </p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Diproses</h3>
                     <p class="text-3xl font-bold mt-2">
-                        {{$diproses}}
+                        {{ $diproses }}
                     </p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Selesai</h3>
                     <p class="text-3xl font-bold mt-2">
-                        {{$selesai}}
+                        {{ $selesai }}
                     </p>
                 </div>
 
                 <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
                     <h3 class="text-gray-600">Ditolak</h3>
                     <p class="text-3xl font-bold mt-2">
-                        {{$ditolak}}
+                        {{ $ditolak }}
                     </p>
                 </div>
             </div>
 
             <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-md sm:rounded-lg p-6">
                 <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-slate-200">Laporan Anda</h2>
+
+                @if ($data->isEmpty())
+                @endif
 
                 <div class="hidden md:grid grid-cols-12 gap-4 text-sm text-gray-500 font-semibold mb-2 px-4">
                     <div class="col-span-4">Judul Laporan</div>
@@ -104,4 +107,5 @@
 
         </div>
     </div>
+
 </x-app-layout>

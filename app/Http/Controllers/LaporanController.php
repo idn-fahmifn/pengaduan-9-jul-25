@@ -13,8 +13,10 @@ class LaporanController extends Controller
 
     public function dashboard()
     {
-        $data = Laporan::paginate(2);
         $user_id = Auth::user()->id;
+        $data = Laporan::where('id_user', $user_id)
+        ->paginate('2');
+
 
         // menghitung semua laporan saya
         $laporan_saya = Laporan::where('id_user', $user_id)->count();

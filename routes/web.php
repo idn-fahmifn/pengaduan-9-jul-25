@@ -3,6 +3,7 @@
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,21 +13,24 @@ Route::get('/', function () {
 // group admin
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->group(function () {
     // route dashboard admin.
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
+
+    // petugas
+    Route::resource('user', UserController::class);
+
 });
 
 // group petugas
 Route::middleware(['auth', 'verified', 'petugas'])->prefix('petugas')->group(function () {
     // route dashboard petugas.
-    Route::get('/dashboard', function () {
-        return view('petugas.dashboard');
-    })->name('dashboard.petugas');
+    Route::get('/dashboard', [PetugasController::class, 'dashboard'])->name('dashboard.petugas');
 
     Route::get('laporan', [PetugasController::class, 'index'])->name('petugas.laporan.index');
     Route::get('laporan/{param}', [PetugasController::class, 'show'])->name('petugas.laporan.show');
     Route::post('laporan/{param}', [PetugasController::class, 'store'])->name('petugas.laporan.post');
+
+
 
 
 });

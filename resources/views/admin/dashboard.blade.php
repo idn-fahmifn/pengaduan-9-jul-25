@@ -5,30 +5,40 @@
                 <h1 class="text-2xl font-bold text-white">Laporan Pengaduan</h1>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-gray-600">Laporan</h3>
-                    <p class="text-3xl font-bold mt-2">{{ $total }}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-6">
+                <div class="grid grid-cols-1 mb-8">
+                    <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-gray-600">Semua Laporan</h3>
+                        <p class="text-3xl font-bold mt-2">{{ $total }}</p>
+                    </div>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-gray-600">Diproses</h3>
-                    <p class="text-3xl font-bold mt-2">{{ $diproses }}</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-gray-600">Pending</h3>
+                        <p class="text-3xl font-bold mt-2">{{ $pending }}</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-gray-600">Diproses</h3>
+                        <p class="text-3xl font-bold mt-2">{{ $diproses }}</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-gray-600">Selesai</h3>
+                        <p class="text-3xl font-bold mt-2">{{ $selesai }}</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-gray-600">Ditolak</h3>
+                        <p class="text-3xl font-bold mt-2">{{ $ditolak }}</p>
+                    </div>
                 </div>
 
-                <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-gray-600">Selesai</h3>
-                    <p class="text-3xl font-bold mt-2">{{ $selesai }}</p>
-                </div>
-
-                <div class="bg-white dark:bg-slate-800 dark:text-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-gray-600">Ditolak</h3>
-                    <p class="text-3xl font-bold mt-2">{{ $ditolak }}</p>
-                </div>
             </div>
 
+
             <div class="bg-white dark:bg-slate-800 overflow-hidden shadow-md sm:rounded-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-slate-200">Laporan Anda</h2>
+                <h2 class="text-xl font-bold mb-4 text-gray-800 dark:text-slate-200">Laporan</h2>
 
                 <div class="hidden md:grid grid-cols-12 gap-4 text-sm text-gray-500 font-semibold mb-2 px-4">
                     <div class="col-span-4">Judul Laporan</div>
@@ -39,9 +49,8 @@
                 </div>
 
                 <div class="space-y-4">
-
                     @foreach ($data as $item)
-                        <a href="{{route('petugas.laporan.show', $item->id)}}"
+                        <a href="{{ route('petugas.laporan.show', $item->id) }}"
                             class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-gray-50 dark:bg-slate-700 hover:bg-gray-100 dark:hover:bg-slate-600 p-4 rounded-lg">
                             <div class="col-span-1 md:col-span-4 flex items-center">
                                 <span class="font-semibold text-gray-900 dark:text-gray-100">{{ $item->judul }}</span>
@@ -88,20 +97,14 @@
                             </div>
                         </a>
                     @endforeach
-
-                    @if ($data->isEmpty())
-                        <div class="flex justify-center items-center bg-gray-50 dark:bg-yellow-500 hover:bg-gray-100 dark:hover:bg-yellow-200 p-6 m-4 rounded-lg">
-                            <span class="text-gray-700">Semua laporan sudah direspon</span>
-                        </div>
-                    @endif
-
-                    <div class="mt-4">
-                        {{$data}}
-                    </div>
-
-                    
-
                 </div>
+
+                @if ($data->isEmpty())
+                    <div
+                        class="flex justify-center items-center bg-gray-50 dark:bg-yellow-500 hover:bg-gray-100 dark:hover:bg-yellow-200 p-6 m-4 rounded-lg">
+                        <span class="text-gray-700">Semua laporan sudah direspon</span>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

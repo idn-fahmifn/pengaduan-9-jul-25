@@ -10,6 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class PetugasController extends Controller
 {
+
+    // dashboard
+    public function dashboard()
+    {
+        $data = Laporan::where('status', 'pending')->paginate(5);
+        $total_laporan = Laporan::count();
+        $pending = Laporan::where('status', 'pending')->count();
+        $diproses = Laporan::where('status', 'diproses')->count();
+        $selesai = Laporan::where('status', 'selesai')->count();
+        $ditolak = Laporan::where('status', 'ditolak')->count();
+        return view('petugas.dashboard', [
+            'total' => $total_laporan,
+            'pending' => $pending,
+            'diproses' => $diproses,
+            'selesai' => $selesai,
+            'ditolak' => $ditolak,
+            'data' => $data
+        ]);
+    }
+
     public function index()
     {
         $data = Laporan::all();
